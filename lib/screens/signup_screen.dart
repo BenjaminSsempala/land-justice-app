@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:landjustice/screens/home.dart';
+import 'package:landjustice/screens/landingPage.dart';
 import 'package:landjustice/screens/login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -16,14 +17,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.black,
-      extendBodyBehindAppBar: true,
+      backgroundColor: const Color.fromRGBO(0, 0, 0, 1),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LandingPage(),
+              ),
+            );
+          },
+        ),
+        title: Text(
+          "Sign Up",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.fromLTRB(14, 20, 17, 0),
+        padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -31,15 +50,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
             const Align(
               heightFactor: 0.5,
               alignment: Alignment.topLeft,
-              child: Text(
+              child: Center(
+                  child: Text(
                 "Create New Account",
+              )
               ),
             ),
-            const SizedBox(height: 24.0),
+            const SizedBox(height: 48.0),
             TextFormField(
               controller: _nameController,
               obscureText: true,
               decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 hintText: "Full Name",
                 hintStyle: TextStyle(
                   color: Colors.grey,
@@ -50,6 +73,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             const SizedBox(height: 19.0),
             TextFormField(
               decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 hintText: "Phone Number",
                 hintStyle: TextStyle(
                   color: Colors.grey,
@@ -61,6 +86,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             TextFormField(
               controller: _emailController,
               decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 hintText: "Email Address",
                 hintStyle: TextStyle(
                   color: Colors.grey,
@@ -68,11 +95,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 border: OutlineInputBorder(),
               ),
             ),
+
             const SizedBox(height: 19.0),
             TextFormField(
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 hintText: "Password",
                 hintStyle: TextStyle(
                   color: Colors.grey,
@@ -80,7 +110,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 50),
             ElevatedButton(
               style: ButtonStyle(),
               onPressed: () {
@@ -94,9 +124,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               },
               child: Container(
                 margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(91, 18, 91, 17),
-                  child: Text('SIGN UP'),
+                child: Center(
+                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 18, 0, 17),
+                      child: Text('SIGN UP')),
                 ),
               ),
             ),
@@ -111,12 +142,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   );
                 },
-                child: const Text(
+                child: const Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
                   'Already Have an Account? Sign In',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
                   ),
+                ),
                 ),
               ),
             ),

@@ -16,13 +16,13 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme(
           bodyMedium: TextStyle(
             color: Colors.white,
-            fontFamily: 'HKGrotesk',
+            fontFamily: 'poppins',
             fontSize: 24.0,
             fontWeight: FontWeight.w700,
           ),
           bodySmall: TextStyle(
             color: Colors.white,
-            fontFamily: 'HKGrotesk',
+            fontFamily: 'poppins',
             fontSize: 16.0,
             fontWeight: FontWeight.w500,
           ),

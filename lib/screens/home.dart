@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:landjustice/screens/homeLading.dart';
+import 'package:landjustice/screens/homeLanding.dart';
 import 'package:landjustice/widgets/customWidgets.dart';
 
 class MyHomePage extends StatefulWidget {

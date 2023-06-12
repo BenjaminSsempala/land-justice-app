@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:landjustice/screens/home.dart';
+import 'package:landjustice/screens/landingPage.dart';
 import 'package:landjustice/screens/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,58 +17,50 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LandingPage(),
+              ),
+            );
+          },
+        ),
+        title: const Text(
+          "Sign In",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       backgroundColor: Colors.black,
-      extendBodyBehindAppBar: true,
       body: Padding(
-        padding: EdgeInsets.fromLTRB(16, 0, 17, 0),
+        padding: const EdgeInsets.fromLTRB(16, 0, 17, 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              width: 359,
-              height: 265,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: const Offset(0, 3),
+            const FlutterLogo(size: 100),
+            const SizedBox(height: 16.0),
+            Text(
+              "Land Justice",
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Colors.white.withOpacity(0.8),
+                    fontWeight: FontWeight.w400,
                   ),
-                ],
-                borderRadius: BorderRadius.circular(0),
-                // color: CustomColors.appDarkGreenColor,
-              ),
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(17, 0, 0, 18),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(0),
-                    color: Colors.grey,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      FlutterLogo(size: 100),
-                      const SizedBox(height: 16.0),
-                      Text(
-                        "Land Justice",
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: Colors.white.withOpacity(0.8),
-                              fontWeight: FontWeight.w400,
-                            ),
-                      ),
-                      const SizedBox(height: 16.0),
-                    ],
-                  ),
-                ),
-              ),
             ),
+            const SizedBox(height: 16.0),
+           
             const SizedBox(height: 41.0),
             TextFormField(
               controller: _emailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 hintText: "Email",
                 hintStyle: TextStyle(
                   color: Colors.grey,
@@ -79,7 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
             TextFormField(
               controller: _passwordController,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 hintText: "Password",
                 hintStyle: TextStyle(
                   color: Colors.grey,
@@ -87,16 +82,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 50.0),
             ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.white,
-                ),
-              ),
+              style: ButtonStyle(),
               onPressed: () {
-                // TODO: Implement login logic
-
+                // TODO: Implement SIGNIN logic
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -105,10 +95,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
               },
               child: Container(
-                margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(91, 18, 91, 17),
-                  child: Text('Login'),
+                margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                child: const Center(
+                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 18, 0, 17),
+                      child: Text('SIGN IN')),
                 ),
               ),
             ),
@@ -123,11 +114,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   );
                 },
-                child: const Text(
-                  'Sign up',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
+                child: const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      'Sign up',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    )
                 ),
               ),
             ),
